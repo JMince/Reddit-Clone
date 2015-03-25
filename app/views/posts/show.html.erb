@@ -1,0 +1,18 @@
+<%= @post.title %><br>
+<%= @post.content %><br>
+<%= link_to "back to index", root_path %>
+
+<% if current_user %>
+<%= link_to "Add a Comment", new_post_comment_path(@post) %>
+<% end %>
+
+
+<br><br>
+
+
+<% @comments.each do |comment| %>
+<%= "#{comment.user.username} said:" %>
+<%= comment.content %>
+<br><br>
+<%= link_to 'Edit Comment', edit_post_comment_path(@post, comment) %>
+<% end %>

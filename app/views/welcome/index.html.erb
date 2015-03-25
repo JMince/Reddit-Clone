@@ -1,12 +1,18 @@
 Reddit Clone - Posts
 
-
 <% if current_user %>
-<%= "Welcome #{current_user.username}" %><br>
-<%= link_to 'Sign Out', sign_out_path %>
-<%= link_to 'Sign In', sign_in_path %>
-<%= link_to 'New Post', new_post_path %>
+  <%= "Welcome #{current_user.username}" %><br>
+  <%= link_to 'Sign Out', sign_out_path %>
+  <%= link_to 'Sign In', sign_in_path %>
+  <%= link_to 'New Post', new_post_path %>
 <% else %>
-<%= link_to "Sign Up", sign_up_path %>
+  <%= link_to "Sign Up", sign_up_path %>
+<% end %>
 
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post) %>
+  <% if current_user && current_user.id == post.user_id %>
+    <%= link_to 'Edit Post', edit_post_path(post) %>
+    <%= link_to 'Delete Post', post_path(post), method: :delete %>
+  <% end %>
 <% end %>

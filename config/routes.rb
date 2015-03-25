@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'sign-out', to: 'authentication#destroy'
 
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
 end

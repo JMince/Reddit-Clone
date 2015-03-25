@@ -1,0 +1,7 @@
+Create Comment
+
+<%= form_for([@post, @comment]) do |f| %>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<%= f.submit %>
+<% end %>

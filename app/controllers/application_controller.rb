@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by_id(session[:user_id])
   end
 
+  def check_user
+    redirect_to root_path, notice: "You must be logged in to do this" unless current_user
+  end
+
+
 end
